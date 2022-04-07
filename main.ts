@@ -3,7 +3,6 @@ let A = [2, 1]
 let B = [0, 2]
 let C = [3, 2]
 let x = A
-let y = 1
 let counter = 0
 basic.forever(function on_forever() {
     led.plotBrightness(stred[0], stred[1], 100)
@@ -11,27 +10,23 @@ basic.forever(function on_forever() {
     led.plot(B[0], B[1])
     led.plot(C[0], C[1])
 })
-// B.reverse()
-// C.reverse()
-input.onButtonPressed(Button.A, function on_button_pressed_a() {
+input.onButtonPressed(Button.B, function on_button_pressed_b() {
+    otaceni(0)
+})
+function otaceni(y: number) {
     
     basic.clearScreen()
     while (counter != 3) {
         counter += 1
-        console.logValue("counter", counter)
-        console.logValue("A", A)
-        console.logValue("b", B)
-        console.logValue("C", C)
-        console.logValue("x", x)
         x.reverse()
-        if (x[1] == 0) {
-            x[1] = 4
-        } else if (x[1] == 4) {
-            x[1] = 0
-        } else if (x[1] == 3) {
-            x[1] = 1
-        } else if (x[1] == 1) {
-            x[1] = 3
+        if (x[y] == 0) {
+            x[y] = 4
+        } else if (x[y] == 4) {
+            x[y] = 0
+        } else if (x[y] == 3) {
+            x[y] = 1
+        } else if (x[y] == 1) {
+            x[y] = 3
         }
         
         if (counter == 1) {
@@ -45,4 +40,10 @@ input.onButtonPressed(Button.A, function on_button_pressed_a() {
     }
     counter = 0
     x = A
+}
+
+// B.reverse()
+// C.reverse()
+input.onButtonPressed(Button.A, function on_button_pressed_a() {
+    otaceni(1)
 })

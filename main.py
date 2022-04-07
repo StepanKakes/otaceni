@@ -3,7 +3,6 @@ A=[2,1]
 B=[0,2]
 C=[3,2]
 x=A
-y=1
 counter=0
 def on_forever():
     led.plot_brightness(stred[0], stred[1], 100)
@@ -12,37 +11,31 @@ def on_forever():
     led.plot(C[0],C[1])
     
 basic.forever(on_forever)
-
 def on_button_pressed_a():
-    global A, B, C, counter, x,y
+    otaceni(1)
+def on_button_pressed_b():
+    otaceni(0)
+input.on_button_pressed(Button.B, on_button_pressed_b)
+def otaceni(y):
+    global A, B, C, counter, x
     basic.clear_screen()
     while counter!=3:
         counter+=1
-        console.log_value("counter", counter)
-        console.log_value("A", A)
-        console.log_value("b", B)
-        console.log_value("C", C)
-        console.log_value("x", x)
         x.reverse()
-        if x[1]==0:
-            x[1]=4
-        elif x[1]==4:
-            x[1]=0
-        elif x[1]==3:
-            x[1]=1
-        elif x[1]==1:
-            x[1]=3
+        if x[y]==0:
+            x[y]=4
+        elif x[y]==4:
+            x[y]=0
+        elif x[y]==3:
+            x[y]=1
+        elif x[y]==1:
+            x[y]=3
         if counter==1:
             x=B
         if counter==2:
             x=C
-        
     counter=0
     x=A
-
-    
-   
-
     
     
     #B.reverse()
